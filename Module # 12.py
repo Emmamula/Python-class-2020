@@ -1,7 +1,3 @@
-''' 
-    This module implements the Triangle Peg Game.
-    Author: Caitlin Carnahan
-    Updated: June 11, 2016 
 '''
 
 import sys, pickle
