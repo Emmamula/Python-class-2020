@@ -7,6 +7,12 @@ print("current time:")
 print(data)
 print("")
 
+  data = line.strip().split("\t")
+     if len(data) == 6:
+         date, time, store, item, cost, payment = data
+
+     print("{0}\t{1}\t{2}".format(item, cost, time))
+
 #2.  Add the timedelta to the datetime and subtract 60 seconds and add 2 years
 from datetime import timedelta
 from datetime import datetime
