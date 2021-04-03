@@ -240,4 +240,4 @@ class QuitBtn(QtWidgets.QPushButton):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = PegGameWindow()
-    app.exec_()
+    app.exec_() '''
