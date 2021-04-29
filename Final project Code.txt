@@ -1,0 +1,79 @@
+#importing pandas and importing csv data
+
+In [2]: import pandas as pd
+
+In [3]: df= pd.read_csv (r'G:\facilities.csv')
+
+In [4]: print(df.head(3))
+     nyt_id                                  facility_name  ... total_officer_deaths note
+0  F3EFE858                  Alex City Work Release prison  ...                  0.0  NaN
+1  5B910220  Alabama Therapeutic Education Facility prison  ...                  0.0  NaN
+2  02FB1675                     Bibb Correctional Facility  ...                  0.0  NaN
+
+[3 rows x 16 columns]
+
+In [5]: print(df)
+        nyt_id                                      facility_name  ... total_officer_deaths note
+0     F3EFE858                      Alex City Work Release prison  ...                  0.0  NaN
+1     5B910220      Alabama Therapeutic Education Facility prison  ...                  0.0  NaN
+2     02FB1675                         Bibb Correctional Facility  ...                  0.0  NaN
+3     6378F6C4  Birmingham Women's Community Based Facility an...  ...                  0.0  NaN
+4     EAABF900                      Bullock Correctional Facility  ...                  1.0  NaN
+...        ...                                                ...  ...                  ...  ...
+2634  15289545                          North Lake federal prison  ...                  0.0  NaN
+2635  1558C2BF                              Rivers federal prison  ...                  0.0  NaN
+2636  C9CF62B9                       Reeves County federal prison  ...                  0.0  NaN
+2637  364869B9                          Flightline federal prison  ...                  0.0  NaN
+2638  5CFB7978                    Moshannon Valley federal prison  ...                  0.0  NaN
+
+[2639 rows x 16 columns]
+
+#dropping unwanted columns
+
+In [7]: df = df.drop(columns=['nyt_id','facility_county_fips'])
+
+In [8]: print(df)
+                                          facility_name                facility_type  ... total_officer_deaths note
+0                         Alex City Work Release prison    Low-security work release  ...                  0.0  NaN
+1         Alabama Therapeutic Education Facility prison  State rehabilitation center  ...                  0.0  NaN
+2                            Bibb Correctional Facility                 State prison  ...                  0.0  NaN
+3     Birmingham Women's Community Based Facility an...                 State prison  ...                  0.0  NaN
+4                         Bullock Correctional Facility                 State prison  ...                  1.0  NaN
+...                                                 ...                          ...  ...                  ...  ...
+2634                          North Lake federal prison               Federal prison  ...                  0.0  NaN
+2635                              Rivers federal prison               Federal prison  ...                  0.0  NaN
+2636                       Reeves County federal prison               Federal prison  ...                  0.0  NaN
+2637                          Flightline federal prison               Federal prison  ...                  0.0  NaN
+2638                    Moshannon Valley federal prison               Federal prison  ...                  0.0  NaN
+
+[2639 rows x 14 columns]
+
+In [9]: df = df.drop(columns=['facility_lng','facility_lat','max_inmate_population_2020'])
+
+In [10]: print(df.head())
+                                       facility_name                facility_type  ... total_officer_deaths note
+0                      Alex City Work Release prison    Low-security work release  ...                  0.0  NaN
+1      Alabama Therapeutic Education Facility prison  State rehabilitation center  ...                  0.0  NaN
+2                         Bibb Correctional Facility                 State prison  ...                  0.0  NaN
+3  Birmingham Women's Community Based Facility an...                 State prison  ...                  0.0  NaN
+4                      Bullock Correctional Facility                 State prison  ...                  1.0  NaN
+
+[5 rows x 11 columns]
+
+In [12]: df = df.drop(columns=['note'])
+
+#performing analysis
+
+In [13]: df.describe()
+Out[14]:
+       latest_inmate_population  total_inmate_cases  total_inmate_deaths  total_officer_cases  total_officer_deaths
+count               1593.000000         2639.000000          2639.000000          2639.000000           2638.000000
+mean                 822.386692          199.431603             0.983327            42.561955              0.083776
+std                  862.009973          420.344387             2.982973            89.408213              0.363528
+min                    1.000000            0.000000             0.000000             0.000000              0.000000
+25%                  163.000000            8.000000             0.000000             0.000000              0.000000
+50%                  579.000000           59.000000             0.000000             9.000000              0.000000
+75%                 1197.000000          226.500000             0.000000            50.500000              0.000000
+max                 8616.000000        12290.000000            45.000000          1718.000000              6.000000
+
+
